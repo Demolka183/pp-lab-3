@@ -1,5 +1,6 @@
 import geometry.Point;
 import geometry.ColoredCircle;
+import geometry.Circle;
 public class main {
     public static void main(String[] args) {
         Point center = new Point(0, 0);
