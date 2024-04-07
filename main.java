@@ -1,44 +1,20 @@
 import geometry.Point;
 import geometry.Circle;
-import geometry.ColoredCirlce;
+import geometry.ColoredCircle;
 
 public class main {
-	public static void main(String[] args) {
-		Point punkt1 = new Point();
-		punkt1.setX(5);
-		punkt1.setY(6);
-		double wspX = punkt1.getX();
-		double wspY = punkt1.getY();
-		
-		System.out.println("Współrzędne pliku to:\nx = " + wspX + "\ny = " + wspY);
-
-		Circle kolo = new Circle(punkt1);
-		System.out.println("Promien kola to " + kolo.getRadius() + "\nPole koła to " + kolo.getArea());
-		System.out.println("Obwod kola to " + kolo.calculatePerimeter());
-		double[] tab = kolo.getCenter();
-		System.out.println("Srodek kola znajduje sie w punkcie x = " + tab[0] + " || y = " + tab[1]);
-		
-		ColoredCirlce kolorowe = new ColoredCirlce(punkt1);
-		System.out.println("Kolor koła to " + kolorowe.getColor());
-		System.out.println("Promien kola to " + kolorowe.getRadius() + "\nPole koła to " + kolorowe.getArea());
-		System.out.println("Obwod kola to " + kolorowe.calculatePerimeter());
-		tab = kolorowe.getCenter();
-		System.out.println("Srodek kola znajduje sie w punkcie x = " + tab[0] + " || y = " + tab[1]);
-		Circle tablica[] = new Circle[2];  
-		tablica[0] = kolo;
-		tablica[1] = kolorowe;
-		for(Object kolko : tablica) {
-			
-			if(kolko instanceof ColoredCirlce) {
-				ColoredCirlce tymczas = (ColoredCirlce) kolko;
-				System.out.println("Obiekt klasy ColoredCircle \nPole to " + tymczas.getArea() + "\nKolor to " + tymczas.getColor() );
-				tymczas = null;
-			
-			}else if(kolko instanceof Circle) {
-				Circle tymczas = (Circle) kolko;
-				System.out.println("Obiekt klasy Circle \nPole to " + tymczas.getArea() );
-				tymczas = null;
-			}
-		}
-	}
+    public static void main(String[] args) {
+        Circle[] circles = new Circle[4];
+        circles[0] = new Circle(new Point(0, 0), 5);
+        circles[1] = new ColoredCircle(new Point(1, 1), 10, "Blue");
+        circles[2] = new Circle(new Point(2, 2), 15);
+        circles[3] = new ColoredCircle(new Point(3, 3), 20, "Green");
+        for (Circle circle : circles) {
+            System.out.println("Obszar koła wynosi: " + circle.calculateArea());
+            if (circle instanceof ColoredCircle) {
+                ColoredCircle coloredCircle = (ColoredCircle) circle;
+                System.out.println("Kolor koła to: " + coloredCircle.getColor());
+            }
+        }
+    }
 }
